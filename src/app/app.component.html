@@ -1,0 +1,21 @@
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 flex justify-center mt-4">
+	<div class="glass-surface rounded-full p-1 shadow-lg">
+		<a routerLink="/budget" routerLinkActive="active"
+			class="inline-block px-4 py-2 rounded-full text-gray-400 transition duration-200 ease-in-out"
+			[ngClass]="{ 'bg-white/85 shadow-md text-slate-600': isActive('/budget') }">
+			Budget
+		</a>
+		<a routerLink="/timeline" routerLinkActive="active"
+			class="inline-block px-4 py-2 rounded-full text-gray-400 transition duration-200 ease-in-out"
+			[ngClass]="{ 'bg-white/85 shadow-md text-slate-600': isActive('/timeline') }">
+			Timeline
+		</a>
+		<a routerLink="/admin" routerLinkActive="active"
+			class="inline-block px-4 py-2 rounded-full text-gray-400 transition duration-200 ease-in-out"
+			[ngClass]="{ 'bg-white/85 shadow-md text-slate-600': isActive('/admin') }">
+			Admin
+		</a>
+	</div>
+</nav>
+
+<router-outlet></router-outlet>

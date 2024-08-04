@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bg-color: theme("colors.white");
+	--bg-surface: theme("colors.slate.50");
+	--surface-border: theme("colors.slate.200");
+	--color-on-surface: theme("colors.slate.500");
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: theme("colors.black");
+		--bg-surface: theme("colors.neutral.900");
+		--surface-border: theme("colors.neutral.800");
+		--color-on-surface: theme("colors.neutral.500");
+		--color-off-surface: theme("colors.neutral.400");
+		--color-secondary-on-surface: theme("colors.neutral.600");
+	}
+}
+
+* {
+	color: var(--color-on-surface);
+}
+
+.surface {
+	background-color: var(--bg-surface);
+	border: 1px solid var(--surface-border);
+}
+
+.glass-surface {
+	background-color: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.color-on-surface {
+	color: var(--color-on-surface);
+}
+
+.color-secondary-on-surface {
+	color: var(--color-secondary-on-surface);
+}
+
+.color-off-surface {
+	color: var(--color-off-surface);
+}
+
+body {
+	background-color: var(--bg-color);
+}

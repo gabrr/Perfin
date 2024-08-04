@@ -1,0 +1,40 @@
+<div class="max-w-screen-lg m-auto mt-6 flex flex-col">
+	<typography variant="h1" class="color-off-surface mb-4">June 2024</typography>
+
+	<div class="flex gap-4 flex-wrap justify-between">
+		<ng-container *ngFor="let item of budget">
+			<monetary-block bgClass="surface">
+				<monetary-block-title>{{item.label | titlecase}}</monetary-block-title>
+				<monetary-block-value-negative>- {{item.value | currency: 'BRL'}}</monetary-block-value-negative>
+				<monetary-block-subvalue>{{item.limit | currency: 'BRL'}}</monetary-block-subvalue>
+			</monetary-block>
+		</ng-container>
+	</div>
+
+	<div class="mt-8">
+		<typography variant="h2" class="color-off-surface mb-3">Stats</typography>
+
+		<div class="flex gap-4 flex-wrap">
+			<ng-container *ngFor="let stat of stats; let i = index">
+				<ng-template [ngIf]="stat.icon">
+					<monetary-block bgClass="bg-green-100">
+						<monetary-block-icon-check />
+						<monetary-block-title>{{stat.label | titlecase}}</monetary-block-title>
+						<monetary-block-value class="text-green-600 font-bold">{{stat.value | currency:
+							'BRL'}}</monetary-block-value>
+					</monetary-block>
+				</ng-template>
+
+				<ng-template [ngIf]="!stat.icon">
+					<monetary-block bgClass="surface">
+						<monetary-block-title>{{stat.label | titlecase}}</monetary-block-title>
+						<monetary-block-value class="font-bold">{{stat.value |
+							currency:'BRL'}}</monetary-block-value>
+					</monetary-block>
+				</ng-template>
+			</ng-container>
+		</div>
+	</div>
+
+	<expense-list drawer />
+</div>

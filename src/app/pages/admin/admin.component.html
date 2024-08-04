@@ -1,0 +1,35 @@
+<div class="max-w-screen-lg m-auto mt-6 flex flex-col gap-14">
+	<div>
+		<h2 class="text-2xl font-bold mb-4">Categorias</h2>
+		<div class="flex gap-1 flex-wrap ">
+			<word-block *ngFor="let category of categories" [name]="category">
+			</word-block>
+			<icon-block (newCategory)="addNewCategory()"></icon-block>
+		</div>
+	</div>
+
+	<div>
+		<h2 class="text-2xl font-bold mb-4">Timeline</h2>
+		<div class="flex flex-wrap gap-1">
+			<word-block *ngFor="let category of timelineCategories" [name]="category">
+			</word-block>
+			<icon-block (newCategory)="addNewTimelineCategory()"></icon-block>
+		</div>
+	</div>
+
+	<div>
+		<h2 class="text-2xl font-bold mb-4">Upload Section</h2>
+		<form (submit)="uploadTransactions($event)">
+			<div class="flex w-full flex-wrap gap-8">
+				<upload-block name="rico" class="flex-1" fileName="Card Rico" />
+				<upload-block name="inter" class="flex-1" fileName="Card Inter" />
+				<upload-block name="debit-inter" class="flex-1" fileName="Account Inter" />
+			</div>
+
+			<button type="submit"
+				class="px-4 py-2 bg-slate-900 text-slate-300 rounded-lg mt-4 hover:opacity-70 transition-opacity">
+				Upload Transactions
+			</button>
+		</form>
+	</div>
+</div>
