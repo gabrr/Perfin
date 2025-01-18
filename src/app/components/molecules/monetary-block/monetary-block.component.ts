@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TypographyComponent } from '@app/components/atoms/typography/typography.component';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'monetary-block',
@@ -21,7 +20,7 @@ import { TypographyComponent } from '@app/components/atoms/typography/typography
       <ng-content select="monetary-block-subvalue" />
     </div>
   `,
-  imports: [CommonModule, TypographyComponent],
+  imports: [CommonModule],
 })
 export class MonetaryBlockComponent {
   @Input() bgClass: string = 'bg-gray-100';

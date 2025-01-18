@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stepper</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="line-circles">
+
+			<div class="circle-container">
+				<div class="circle completed"></div>
+			</div>
+
+			<div class="circle-container">
+				<div class="circle current"></div>
+			</div>
+
+			<div class="circle-container">
+				<div class="circle"></div>
+			</div>
+
+			<span class="line"></span>
+		</div>
+
+		<div class="text-blocks">
+			<div class="text-block">one babla eblbe cdbjdbcbjcdcbdjdc</div>
+			<div class="text-block">Two</div>
+			<div class="text-block">Three</div>
+		</div>
+	</div>
+
+</body>
+
+<style>
+	:root {
+		--container-size: 100px;
+	}
+
+	.line {
+		width: 100%;
+		height: 2px;
+		background-color: black;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.line::after {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 50%;
+		background-color: red;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		width: max-content;
+		row-gap: 8px;
+	}
+
+	.circle-container {
+		width: var(--container-size);
+		z-index: 1;
+		display: flex;
+	}
+
+	.line-circles {
+		position: relative;
+		display: flex;
+	}
+
+	.circle {
+		height: 20px;
+		width: 20px;
+		background-color: black;
+		border-radius: 100%;
+		margin: auto;
+	}
+
+
+	.circle-container:last-of-type .circle {
+		margin-right: 0;
+	}
+
+	.circle-container:first-of-type .circle {
+		margin-left: 0;
+	}
+
+	.completed {
+		background-color: red;
+	}
+
+	.current {
+		background-color: blue;
+		border: 5px solid rgba(0, 0, 200, 0.7);
+	}
+
+	.text-blocks {
+		display: flex;
+	}
+
+	.text-block {
+		width: var(--container-size);
+		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.text-block:first-of-type {
+		text-align: start;
+	}
+
+	.text-block:last-of-type {
+		text-align: end;
+	}
+</style>
+
+</html>

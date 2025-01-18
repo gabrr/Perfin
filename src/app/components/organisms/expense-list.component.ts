@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { transactionsMock } from 'transactions';
+import { Component, OnInit } from '@angular/core';
 import { TypographyComponent } from '../atoms/typography/typography.component';
+import { ApiService } from '@app/services/api';
 
 @Component({
   selector: 'expense-list',
@@ -14,11 +14,12 @@ import { TypographyComponent } from '../atoms/typography/typography.component';
       <div class="flex flex-col rounded-lg min-w-80 overflow-y-scroll">
         <div *ngFor="let transaction of transactions" class="mb-2">
           <div>
-            <typography variant="p" class="font-bold text-base">{{
-              transaction.description
-            }}</typography>
+            <typography variant="p" class="font-bold text-base"
+              >{{ transaction.source }} —
+              {{ transaction.description }}</typography
+            >
             <typography class="opacity-80">{{
-              transaction.amount | currency
+              transaction.amount | currency : 'BRL'
             }}</typography>
           </div>
         </div>
@@ -26,6 +27,18 @@ import { TypographyComponent } from '../atoms/typography/typography.component';
     </div>
   `,
 })
-export class ExpenseListComponent {
-  transactions = transactionsMock;
+export class ExpenseListComponent implements OnInit {
+  transactions: any[] = [];
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {
+    this.fetchTransactions();
+  }
+
+  fetchTransactions() {
+    this.apiService.get('transactions').subscribe((data: any) => {
+      this.transactions = data;
+    });
+  }
 }

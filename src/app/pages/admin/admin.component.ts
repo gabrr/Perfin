@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormSubmittedEvent } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IconBlockComponent } from '@app/components/atoms/icon-block/icon-block.component';
 import { WordBlockComponent } from '@app/components/atoms/word-block/word-block.component';
@@ -32,8 +31,18 @@ export class AdminComponent {
 	}
 
 	uploadTransactions(event: SubmitEvent) {
-		const files = formEventManager(event);
+		const files: File[] = formEventManager(event);
+
+		for (const file of files) {
+			const formData = new FormData();
+			formData.append('file', file);
+			formData.append('source', 'card:rico');
 
 
+			fetch('http://localhost:8000/api/v1/transactions/uploads', {
+				body: formData,
+				method: 'POST',
+			})
+		}
 	}
 }

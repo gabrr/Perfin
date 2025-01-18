@@ -1,7 +1,7 @@
 export const mockStatus = [
   {
     label: 'Result',
-    value: 500,
+    value: 0,
     icon: 'check_circle',
   },
   {

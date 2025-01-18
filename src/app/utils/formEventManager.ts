@@ -6,7 +6,7 @@ export function formEventManager(event: SubmitEvent): File[] {
 		const formData = new FormData(form);
 		const files: File[] = [];
 
-		formData.forEach((value) => {
+		formData.forEach((value, key) => {
 			if (value instanceof File && value.name) {
 				files.push(value);
 			}
