@@ -27,7 +27,7 @@ export class DrawerDirective implements OnInit {
   }
 
   slideToRight(item: HTMLElement) {
-    item.style.transform = 'translateX(80%)';
+    item.style.transform = 'translateX(10%)';
   }
 
   slideToOriginal(item: HTMLElement) {

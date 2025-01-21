@@ -1,30 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class ApiService {
-	private baseUrl: string;
+  private baseUrl: string;
 
-	constructor(private http: HttpClient) {
-		this.baseUrl = "http://localhost:8000/api/v1"
-	}
+  constructor(private http: HttpClient) {
+    this.baseUrl = 'http://localhost:8000/api/v1';
+  }
 
-	get(endpoint: string) {
-		return this.http.get(`${this.baseUrl}/${endpoint}`);
-	}
+  get<T>(endpoint: string) {
+    return this.http.get<T>(`${this.baseUrl}/${endpoint}`);
+  }
 
-	post(endpoint: string, data: any) {
-		console.log(endpoint, data)
-		return this.http.post(`${this.baseUrl}/${endpoint}`, data);
-	}
+  post<T>(endpoint: string, data: any) {
+    return this.http.post<T>(`${this.baseUrl}/${endpoint}`, data);
+  }
 
-	put(endpoint: string, data: any) {
-		return this.http.put(`${this.baseUrl}/${endpoint}`, data);
-	}
+  put<T>(endpoint: string, data: any) {
+    return this.http.put<T>(`${this.baseUrl}/${endpoint}`, data);
+  }
 
-	delete(endpoint: string) {
-		return this.http.delete(`${this.baseUrl}/${endpoint}`);
-	}
+  delete<T>(endpoint: string) {
+    return this.http.delete<T>(`${this.baseUrl}/${endpoint}`);
+  }
 }
